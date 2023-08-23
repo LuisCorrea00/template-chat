@@ -3,7 +3,14 @@
       <v-card class="pa-7">
           <v-card-title>Entrar</v-card-title>
           <v-card-text class="mt-3">
-              <v-text-field outlined label="Senha" v-model="senhaEntrar"/>
+              <v-text-field
+                  outlined
+                  label="Senha"
+                  v-model="senhaEntrar"
+                  :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                  :type="showPassword ? 'text' : 'password'"
+                  @click:append="showPassword = !showPassword"
+              />
           </v-card-text>
           <v-card-actions>
               <v-spacer></v-spacer>
@@ -21,6 +28,7 @@ export default {
         return{
             senhaEntrar:'',
             showDialog: false,
+            showPassword: false,
         }
     },
     props: {

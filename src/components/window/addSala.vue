@@ -1,5 +1,5 @@
 <template>
-    <v-dialog v-model="showDialog" max-width="500px">
+    <v-dialog v-model="showDialog" max-width="500px" persistent>
         <v-card>
             <v-card-title>
                 <span class="headline">Adicionar Sala</span>
@@ -18,6 +18,9 @@
                     <v-text-field
                         v-model="senhaSala"
                         label="Senha"
+                        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                        :type="showPassword ? 'text' : 'password'"
+                        @click:append="showPassword = !showPassword"
                     />
                 </div>
             </v-card-text>
@@ -45,6 +48,7 @@ export default {
             tipoSala: "",
             senhaSala: "",
             showDialog: "",
+            showPassword: false,
         };
     },
     watch: {
